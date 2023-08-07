@@ -52,6 +52,16 @@ app.use(express.urlencoded({ extended: false }))
 
 app.use(cors())
 
+app.get('/', async (req,res) => {
+
+    res.status(200).json({
+        "GET":"https://task-mangement-server.onrender.com/item",
+        "POST": "https://task-mangement-server.onrender.com/item",
+        "PUT": "https://task-mangement-server.onrender.com/item/id",
+        "DELETE": "https://task-mangement-server.onrender.com/item/id"
+    })
+})
+
 app.get('/item', async (req, res) => {
 
     try{
