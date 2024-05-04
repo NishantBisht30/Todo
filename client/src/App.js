@@ -68,7 +68,11 @@ function App() {
 
         </div>
         <div className="col-span-8">
+    {
+      items && 
+      
           <ItemList items={items} onEditItem={handleEditItem} onDeleteItem={handleDeleteItem} />
+    }
 
         </div>
 
