@@ -21,6 +21,7 @@ function App() {
     axios.get("item").then((response) => {
 
       setItems(response.data)
+      console.log(response.data);
 
     })
   }
@@ -51,21 +52,26 @@ function App() {
 
   return (
 
-    <div className="container mx-auto p-4">
+    <div className="h-[100vh] mx-auto p-4">
 
       <div className="flex justify-center items-center">
 
-        <h1 className="text-2xl font-bold mb-4">TASK MANAGEMENT APP</h1>
+        <h1 className="text-3xl font-bold mb-4 ">TASK MANAGER</h1>
 
       </div>
 
-      <div>
+      <div className="sm:grid grid-cols-12 gap-5 h-full">
 
-        <AddItem onAddItem={handleAddItem} />
+        <div className="col-span-4 px-3 py-3 sm:py-0 mb-5 border-b-[0.01rem] sm:border-r-[0.01rem] border-gray-400">
+          <AddItem onAddItem={handleAddItem} />
+          {editingItem && ( <EditItem item={editingItem} onUpdateItem={handleUpdateItem} /> )}
 
-        <ItemList items={items} onEditItem={handleEditItem} onDeleteItem={handleDeleteItem} />
+        </div>
+        <div className="col-span-8">
+          <ItemList items={items} onEditItem={handleEditItem} onDeleteItem={handleDeleteItem} />
 
-        {editingItem && ( <EditItem item={editingItem} onUpdateItem={handleUpdateItem} /> )}
+        </div>
+
 
       </div>
 
